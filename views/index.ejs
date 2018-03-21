@@ -1,0 +1,85 @@
+<% include ./partials/header %>
+<!-- views/index.ejs -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>EZPZ</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <style>
+        .jumbotron {
+            background-color: rgba(0, 0, 0, 0.5);
+            color: #FFFFFF;
+            padding: 100px 25px;
+        }
+        .jumbotron-results {
+            color: #000000;
+            padding: 0px 10px;
+        }
+        .btn {
+            background-color: #F5845E;
+            border: none;
+            color: #FFFFFF;
+            text-align: center;
+            font-size: 16px;
+        }
+        .btn:hover {
+            background: #EB6841;
+            color: #FFFFFF;
+            box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24), 0 17px 50px 0 rgba(0, 0, 0, 0.19);
+        }
+        h4:small {
+            margin: 0;
+            padding: 0 0 20px;
+            color: #E64D4F;
+            text-align: left;
+        }
+        body {
+            margin: 0;
+            padding: 0;
+            background: url(https://i0.wp.com/ficedu.org/wp-content/uploads/2016/07/Savin-NY-Website-Background-Web.jpg);
+            background-size: cover;
+            font-family: sans-serif;
+        }
+    </style>
+
+</head>
+<body>
+    <div class="jumbotron text-center">
+        <h1>Finding the right job is EZPZ!</h1>
+        <p>Take a quick look at who's hiring:</p>
+        <form action="/" method="GET" class="form-inline" id="job-search">
+            <div class="input-group">
+                <div class="input-group-btn">
+                    <input type="search" name="search" class="form-control" size="50" placeholder="Search by job position" required>
+                    <input type="submit" value="Search" class="btn">
+                </div>                
+            </div>
+        </form>
+    </div>
+    <div class="container">
+        <div class="jumbotron-results">
+            <% if(posts.length > 0) { %>
+                <h4><small>SEARCH RESULTS</small></h4><hr>
+            <% } %>
+            <% for(let i=0; i<posts.length; ++i) { %>
+                <div class="col-sm-9">
+                    <div class="media-left media-top"><img src="http://tradeoneinc.com/wp-content/uploads/commercial-building-icon-1.png" class="media-object" style="width:80px"></div>
+                    <div class="media-body">
+                        <h2 class="media-heading"> <%= posts[i].Company %> </h2>
+                        <h5><span class="fa fa-briefcase"></span> <%= posts[i].Title %> </h5>
+                        <h5><span class="fa fa-plane"></span> <%= posts[i].Location %> </h5>
+                        <h5><span class="label label-success fa fa-usd"> <%= posts[i].Salary %> </span></h5><br>
+                        <p> <%= posts[i].Description %> </p><hr>
+                    </div>
+                </div>
+            <% } %>
+        </div>
+    </div>
+</body>
+</html>

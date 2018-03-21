@@ -1,0 +1,96 @@
+<% include ./partials/header %>
+<!-- views/profile.ejs -->
+<!DOCTYPE html>
+<html>
+<title>W3.CSS Template</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-blue-grey.css">
+<link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Open+Sans'>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+	html,h2,h4,h5 {
+		font-family: "Open Sans", sans-serif
+	}
+	body {
+		margin: 0;
+		padding: 0;
+		background: url(https://i.pinimg.com/originals/84/a5/f1/84a5f1a03629dcc48efa7115b53f3bd6.jpg);
+		background-size: cover;
+		font-family: sans-serif;
+    }
+</style>
+<body class="w3-theme-l5">
+	<div class="w3-container w3-content" style="max-width:1400px;margin-top:80px">
+		<div class="w3-row-padding">
+			<!-- Left Column -->
+			<div class="w3-third">
+				<!-- Profile -->
+				<div class="w3-card w3-round w3-white">
+					<div class="w3-container">
+						<h4 class="w3-center">My Profile</h4>
+						<p class="w3-center"><img src="https://www.hoistgroup.com/wp-content/uploads/2015/01/icon-userprofile-300x300.png" class="w3-circle" style="height:106px;width:106px" alt="Avatar"></p><hr>
+						<p><i class="fa fa-user fa-fw w3-margin-right w3-text-theme"></i> <%= info.Name %></p>
+						<p><i class="fa fa-envelope fa-fw w3-margin-right w3-text-theme"></i> <%= info.Email %></p>
+					</div>
+				</div>
+				<br>
+				<!-- Skills -->
+				<div class="w3-card w3-round w3-white w3-hide-small">
+					<div class="w3-container">
+						<p>Technical Skills:</p><p>
+							<span class="w3-tag w3-small w3-theme-l1"><%= info.TechnicalSkills.split(",")[0] %></span>
+							<span class="w3-tag w3-small w3-theme-l2"><%= info.TechnicalSkills.split(",")[1] %></span>
+							<span class="w3-tag w3-small w3-theme-l3"><%= info.TechnicalSkills.split(",")[2] %></span>
+							<span class="w3-tag w3-small w3-theme-l4"><%= info.TechnicalSkills.split(",")[3] %></span>
+							<span class="w3-tag w3-small w3-theme-l5"><%= info.TechnicalSkills.split(",")[4] %></span>
+						</p><p>Business Skills:</p><p>
+							<span class="w3-tag w3-small w3-theme-l1"><%= info.BusinessSkills.split(",")[0] %></span>
+							<span class="w3-tag w3-small w3-theme-l2"><%= info.BusinessSkills.split(",")[1] %></span>
+							<span class="w3-tag w3-small w3-theme-l3"><%= info.BusinessSkills.split(",")[2] %></span>
+							<span class="w3-tag w3-small w3-theme-l4"><%= info.BusinessSkills.split(",")[3] %></span>
+							<span class="w3-tag w3-small w3-theme-l5"><%= info.BusinessSkills.split(",")[4] %></span>
+						</p><p>Cultural Skills:</p><p>
+							<span class="w3-tag w3-small w3-theme-l1"><%= info.CulturalSkills.split(",")[0] %></span>
+							<span class="w3-tag w3-small w3-theme-l2"><%= info.CulturalSkills.split(",")[1] %></span>
+							<span class="w3-tag w3-small w3-theme-l3"><%= info.CulturalSkills.split(",")[2] %></span>
+							<span class="w3-tag w3-small w3-theme-l4"><%= info.CulturalSkills.split(",")[3] %></span>
+							<span class="w3-tag w3-small w3-theme-l5"><%= info.CulturalSkills.split(",")[4] %></span>
+						</p>
+					</div>
+				</div>
+				<br>
+			</div>
+			<!-- Right Column -->
+			<div class="w3-twothird">
+				<div class="w3-container w3-card w3-white">
+					<h2 class="w3-text-grey w3-padding-16"><i class="fa fa-trophy fa-fw w3-margin-right w3-xxlarge w3-text-teal"></i>Your top 5 jobs based on your skills</h2>
+					<% for(let i=0; i<posts.length; ++i) { %>
+						<!-- Job Posts -->
+						<div class="w3-card w3-round w3-white">
+							<div class="w3-container">
+								<div class="col-sm-9">
+									<div class="media-body">
+										<h2 class="media-heading"><%= posts[i].Company %></h2>
+										<h5><span class="fa fa-briefcase"></span> <%= posts[i].Title %></h5>
+										<h5><span class="fa fa-plane"></span> <%= posts[i].Location %></h5>
+										<h5><span class="fa fa-usd"> <%= posts[i].Salary %></span></h5>
+										<p> <%= posts[i].Description %></p>
+									</div>
+								</div>
+								<div class="w3-row w3-opacity">
+									<div class="w3-half"><button class="w3-button w3-block w3-green w3-section" title="Accept"><i class="fa fa-check"></i></button></div>
+									<div class="w3-half"><button class="w3-button w3-block w3-red w3-section" title="Decline"><i class="fa fa-remove"></i></button></div>
+								</div>
+							</div>
+						</div>
+						<hr>
+					<% } %>
+				</div>
+			</div>
+		</div>
+		<br>
+	</div>
+</body>
+</html>
